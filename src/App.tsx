@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, Linkedin, Mail, ExternalLink, Code, Server, PenTool as Tool } from 'lucide-react';
@@ -11,6 +11,7 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import type { Engine } from "tsparticles-engine";
 import profileImage from './assets/profile.jpg';
+import { Link } from 'react-scroll'; // Importa Link de react-scroll
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -136,6 +137,81 @@ function App() {
         }}
       />
 
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-md">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-white">Rodrigo Ramos</h1>
+          <ul className="flex space-x-6 text-white">
+            <li>
+              <Link
+                to="perfil"
+                smooth={true}
+                duration={800}
+                offset={-70} // Ajusta el desplazamiento para evitar que el navbar cubra la sección
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Perfil
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="educacion"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Educación
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="experiencia-practica"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Experiencia Práctica
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="certificaciones"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Certificaciones
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="competencias"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Competencias
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="idiomas"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Idiomas
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <Parallax
         blur={0}
@@ -200,24 +276,27 @@ function App() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="transform hover:scale-110 transition-transform duration-200"
+                title="Visit my GitHub profile"
               >
                 <div className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-200">
                   <Github size={24} />
                 </div>
               </a>
-              <a 
+                <a 
                 href="https://www.linkedin.com/in/rodrigo-alejandro-ramos-lozano-23010324a/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-transform duration-200"
-              >
+                title="Visit my LinkedIn profile"
+                >
                 <div className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-200">
                   <Linkedin size={24} />
                 </div>
-              </a>
+                </a>
               <a 
                 href="mailto:ramoslozanorodrigoalejandro@gmail.com"
                 className="transform hover:scale-110 transition-transform duration-200"
+                title="Send an email to Rodrigo Ramos"
               >
                 <div className="bg-white text-gray-900 p-3 rounded-full hover:bg-gray-200">
                   <Mail size={24} />
@@ -227,6 +306,102 @@ function App() {
           </div>
         </motion.section>
       </Parallax>
+
+      {/* Profile Section */}
+      <section id="perfil" className="py-20 px-8 bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Perfil
+          </h2>
+          <p className="text-lg text-gray-300 leading-relaxed text-center">
+            Soy un ingeniero en desarrollo de software con interés en crear soluciones tecnológicas eficientes y accesibles.
+            Tengo conocimientos en el desarrollo web y móvil, con experiencia en tecnologías como PHP, Laravel, Java y SQL.
+            Me motiva el aprendizaje continuo y la colaboración en equipos multidisciplinarios para el desarrollo de proyectos innovadores.
+            Busco una oportunidad donde pueda aportar mis habilidades técnicas y crecer profesionalmente en un entorno dinámico.
+          </p>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="educacion" className="py-20 px-8 bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Educación
+          </h2>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white">Ingeniería en desarrollo de software</h3>
+              <p className="text-gray-400">Centro de enseñanza técnica industrial | Enero 2021 – Diciembre 2024</p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white">Tecnólogo profesional en informática</h3>
+              <p className="text-gray-400">Escuela politécnica Ing. Jorge Matute Remus | Enero 2017 – Diciembre 2020</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Practical Experience Section */}
+      <section id="experiencia-practica" className="py-20 px-8 bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Experiencia Práctica
+          </h2>
+          <div>
+            <h3 className="text-2xl font-bold text-white">Fundador y Desarrollador Principal</h3>
+            <p className="text-gray-400">Hello World | 2024 - Presente</p>
+            <ul className="mt-4 list-disc list-inside text-gray-300">
+              <li>Diseño y desarrollo de la API REST con Laravel y PHP para la gestión de usuarios y ejercicios.</li>
+              <li>Creación de una interfaz atractiva con HTML, CSS y JavaScript.</li>
+              <li>Implementación de un compilador en tiempo real compatible con C++, Python y Java.</li>
+              <li>Desarrollo de un asistente basado en IA para guiar a los usuarios en la mejora de su código.</li>
+              <li>Diseño y administración de bases de datos con MySQL para almacenar datos de los usuarios.</li>
+              <li>Uso de Git y GitHub para control de versiones y colaboración.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certificaciones" className="py-20 px-8 bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Diplomados y Certificaciones
+          </h2>
+          <ul className="list-disc list-inside text-gray-300 space-y-4">
+            <li>Opera redes de cómputo | Universidad de Guadalajara</li>
+            <li>Capacitación de usuarios en informática | Universidad de Guadalajara</li>
+            <li>Opera y da mantenimiento a equipos de cómputo | Universidad de Guadalajara</li>
+            <li>Diseña programas y páginas web | Universidad de Guadalajara</li>
+            <li>Gestión de pequeñas y medianas empresas | Universidad de Guadalajara</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Technical Skills Section */}
+      <section id="competencias" className="py-20 px-8 bg-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Competencias Técnicas
+          </h2>
+          <ul className="list-disc list-inside text-gray-300 space-y-4">
+            <li><strong>Lenguajes de Programación:</strong> PHP, JavaScript, Python, Java, C++.</li>
+            <li><strong>Desarrollo Web:</strong> Laravel, HTML, CSS, SQL.</li>
+            <li><strong>Desarrollo Móvil:</strong> Android Studio.</li>
+            <li><strong>Herramientas:</strong> Git/GitHub, Figma.</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Languages Section */}
+      <section id="idiomas" className="py-20 px-8 bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+            Idiomas
+          </h2>
+          <p className="text-lg text-gray-300 text-center">Inglés | Intermedio</p>
+        </div>
+      </section>
 
       {/* Skills Section */}
       <motion.section
